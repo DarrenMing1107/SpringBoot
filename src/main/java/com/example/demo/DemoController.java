@@ -15,7 +15,9 @@ public class DemoController {
     }
 
     @GetMapping("/model")
-    public ResponseEntity<DemoModel> getModel(@RequestParam int id, @RequestParam String name) {
+    public ResponseEntity<DemoModel> getModel(
+            @RequestParam int id,
+            @RequestParam(required = false, defaultValue = "Test") String name) {
         DemoModel model = new DemoModel(id, name);
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
